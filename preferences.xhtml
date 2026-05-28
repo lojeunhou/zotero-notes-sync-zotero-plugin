@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Zotero Notes Sync</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 18px;
+        font: message-box;
+      }
+
+      .zns-section {
+        max-width: 680px;
+      }
+
+      .zns-row {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .zns-inline {
+        display: flex;
+        gap: 8px;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        min-width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="zns-section">
+      <h2>Zotero Notes Sync</h2>
+      <div class="zns-row">
+        <label for="zns-output-dir">Markdown output folder</label>
+        <div class="zns-inline">
+          <input id="zns-output-dir" type="text" />
+          <button id="zns-browse" type="button">Choose...</button>
+        </div>
+      </div>
+
+      <div class="zns-row">
+        <label>
+          <input id="zns-write-index" type="checkbox" />
+          Write _index.md
+        </label>
+        <label>
+          <input id="zns-standalone" type="checkbox" />
+          Include standalone notes
+        </label>
+      </div>
+    </div>
+  </body>
+</html>

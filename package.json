@@ -1,0 +1,23 @@
+{
+  "name": "zotero-notes-sync-zotero-plugin",
+  "version": "0.1.0",
+  "description": "Zotero plugin that exports Zotero notes to Markdown.",
+  "private": false,
+  "license": "MIT",
+  "author": "Lo Jeunhou",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node test/markdown.test.js",
+    "build": "node scripts/package.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lojeunhou/zotero-notes-sync-zotero-plugin.git"
+  },
+  "keywords": [
+    "zotero",
+    "markdown",
+    "notes",
+    "obsidian"
+  ]
+}
