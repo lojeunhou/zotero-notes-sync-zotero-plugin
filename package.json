@@ -1,6 +1,6 @@
 {
   "name": "zotero-notes-sync-zotero-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zotero plugin that exports Zotero notes to Markdown.",
   "private": false,
   "license": "MIT",
