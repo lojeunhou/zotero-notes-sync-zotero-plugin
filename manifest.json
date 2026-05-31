@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Zotero Notes Sync",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Export Zotero notes to Markdown for local knowledge bases.",
   "author": "Lo Jeunhou",
   "homepage_url": "https://github.com/lojeunhou/zotero-notes-sync-zotero-plugin",

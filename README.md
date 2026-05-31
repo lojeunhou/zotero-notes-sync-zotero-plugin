@@ -80,7 +80,7 @@ npm run build
 构建结果会写入 `dist/`：
 
 ```text
-dist/zotero-notes-sync-0.1.0.xpi
+dist/zotero-notes-sync-0.1.1.xpi
 dist/updates.json
 ```
 
