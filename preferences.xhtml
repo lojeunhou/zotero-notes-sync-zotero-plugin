@@ -1,56 +1,47 @@
-<?xml version="1.0"?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Zotero Notes Sync</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 18px;
-        font: message-box;
-      }
+<groupbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  class="zns-section"
+  onload="ZoteroNotesSyncPreferences.init(document)">
+  <html:style>
+    .zns-section {
+      max-width: 680px;
+    }
 
-      .zns-section {
-        max-width: 680px;
-      }
+    .zns-row {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
 
-      .zns-row {
-        display: grid;
-        gap: 6px;
-        margin-bottom: 16px;
-      }
+    .zns-inline {
+      display: flex;
+      gap: 8px;
+    }
 
-      .zns-inline {
-        display: flex;
-        gap: 8px;
-      }
+    .zns-output-dir {
+      flex: 1;
+      min-width: 0;
+    }
+  </html:style>
 
-      input[type="text"] {
-        flex: 1;
-        min-width: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="zns-section">
-      <h2>Zotero Notes Sync</h2>
-      <div class="zns-row">
-        <label for="zns-output-dir">Markdown output folder</label>
-        <div class="zns-inline">
-          <input id="zns-output-dir" type="text" />
-          <button id="zns-browse" type="button">Choose...</button>
-        </div>
-      </div>
+  <label><html:h2>Zotero Notes Sync</html:h2></label>
 
-      <div class="zns-row">
-        <label>
-          <input id="zns-write-index" type="checkbox" />
-          Write _index.md
-        </label>
-        <label>
-          <input id="zns-standalone" type="checkbox" />
-          Include standalone notes
-        </label>
-      </div>
-    </div>
-  </body>
-</html>
+  <vbox class="zns-row">
+    <label control="zns-output-dir">Markdown output folder</label>
+    <html:div class="zns-inline">
+      <html:input id="zns-output-dir" class="zns-output-dir" type="text" />
+      <html:button id="zns-browse" type="button">Choose...</html:button>
+    </html:div>
+  </vbox>
+
+  <vbox class="zns-row">
+    <html:label>
+      <html:input id="zns-write-index" type="checkbox" />
+      Write _index.md
+    </html:label>
+    <html:label>
+      <html:input id="zns-standalone" type="checkbox" />
+      Include standalone notes
+    </html:label>
+  </vbox>
+</groupbox>
