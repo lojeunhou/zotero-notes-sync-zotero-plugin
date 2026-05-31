@@ -317,6 +317,25 @@ var ZoteroNotesSync = (function () {
     await IOUtils.writeUTF8(path, contents);
   }
 
+  function createFilePicker() {
+    if (typeof ChromeUtils !== "undefined" && ChromeUtils.importESModule) {
+      const { FilePicker } = ChromeUtils.importESModule("chrome://zotero/content/modules/filePicker.mjs");
+      return new FilePicker();
+    }
+    return Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+  }
+
+  async function openFilePicker(picker) {
+    if (typeof picker.show === "function") {
+      return picker.show();
+    }
+    return new Promise((resolve) => picker.open(resolve));
+  }
+
+  function getSelectedPath(picker) {
+    return typeof picker.file === "string" ? picker.file : picker.file?.path || "";
+  }
+
   async function syncNotes(options) {
     const outputDir = options.outputDir;
     const writeIndex = options.writeIndex;
@@ -357,11 +376,15 @@ var ZoteroNotesSync = (function () {
   }
 
   async function chooseOutputDir(window) {
-    const picker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
-    picker.init(window, "Choose Markdown output folder", Ci.nsIFilePicker.modeGetFolder);
-    const result = await new Promise((resolve) => picker.open(resolve));
-    if (result === Ci.nsIFilePicker.returnOK || result === Ci.nsIFilePicker.returnReplace) {
-      const path = picker.file.path;
+    const picker = createFilePicker();
+    const modeGetFolder = picker.modeGetFolder ?? Ci.nsIFilePicker.modeGetFolder;
+    const returnOK = picker.returnOK ?? Ci.nsIFilePicker.returnOK;
+    const returnReplace = picker.returnReplace ?? Ci.nsIFilePicker.returnReplace;
+
+    picker.init(window, "Choose Markdown output folder", modeGetFolder);
+    const result = await openFilePicker(picker);
+    if (result === returnOK || result === returnReplace) {
+      const path = getSelectedPath(picker);
       setPref(PREF_OUTPUT_DIR, path);
       return path;
     }
